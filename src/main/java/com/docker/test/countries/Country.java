@@ -1,23 +1,31 @@
 package com.docker.test.countries;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "country")
 public class Country {
 
     @Id
     @Column(columnDefinition = "bpchar")
     private String code;
+    @Column(name = "name")
     private String name;
     private String continent;
     private Integer population;
     @Column(columnDefinition = "float4")
     private Double life_expectancy;
+    @ManyToOne
+    @JoinColumn(name = "language",
+                referencedColumnName = "language")
+    private CountryLanguage countryLanguage;
 
     public Country() {
     }
+
+
+
 
     public String getCode() {
         return code;
