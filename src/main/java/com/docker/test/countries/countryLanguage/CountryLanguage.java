@@ -1,9 +1,8 @@
-package com.docker.test.countries;
+package com.docker.test.countries.countryLanguage;
 
-import org.springframework.context.annotation.Primary;
+import com.docker.test.countries.country.Country;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "country_language")

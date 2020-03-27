@@ -1,4 +1,4 @@
-package com.docker.test.countries;
+package com.docker.test.countries.countryDTO;
 
 import javax.persistence.Id;
 import java.util.List;
@@ -17,8 +17,8 @@ public class CountryDTO {
         population = list[2];
         life_expectancy = list[3];
         country_language = list[4];
-
     }
+
 
     public String getName() {
         return name;
@@ -38,5 +38,9 @@ public class CountryDTO {
 
     public String getCountry_language() {
         return country_language;
+    }
+
+    public void setCountry_language(String country_language) {
+        this.country_language = country_language;
     }
 }

@@ -1,4 +1,4 @@
-package com.docker.test.countries;
+package com.docker.test.countries.country;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
