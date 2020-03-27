@@ -14,6 +14,12 @@ public class CountryLanguage {
     private String code;
     @Column(name = "language")
     private String language;
+    @Column(name = "is_official")
+    private boolean is_official;
+
+    @OneToOne
+    @MapsId
+    private Country country;
 
 
     public CountryLanguage() {

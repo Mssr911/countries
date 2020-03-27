@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Country {
 
     @Id
-    @Column(columnDefinition = "bpchar")
+    @Column(name = "code", columnDefinition = "bpchar")
     private String code;
     @Column(name = "name")
     private String name;
@@ -16,9 +16,8 @@ public class Country {
     private Integer population;
     @Column(columnDefinition = "float4")
     private Double life_expectancy;
-    @ManyToOne
-    @JoinColumn(name = "language",
-                referencedColumnName = "language")
+
+    @OneToOne(mappedBy = "country")
     private CountryLanguage countryLanguage;
 
     public Country() {
