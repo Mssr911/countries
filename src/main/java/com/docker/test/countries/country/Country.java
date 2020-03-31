@@ -4,6 +4,7 @@ package com.docker.test.countries.country;
 import com.docker.test.countries.countryLanguage.CountryLanguage;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "country")
@@ -19,8 +20,8 @@ public class Country {
     @Column(columnDefinition = "float4")
     private Double life_expectancy;
 
-    @OneToOne(mappedBy = "country")
-    private CountryLanguage countryLanguage;
+    @OneToMany(mappedBy = "country")
+    private Set<CountryLanguage> countryLanguage;
 
     public Country() {
     }
