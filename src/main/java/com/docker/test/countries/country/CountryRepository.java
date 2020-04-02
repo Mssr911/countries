@@ -7,18 +7,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CountryRepository extends JpaRepository<Country, Integer> {
+public interface CountryRepository extends JpaRepository<Country, String> {
 
-    @Query("SELECT c.name, c.continent, c.population, c.life_expectancy, l.language " +
-            "from Country c JOIN c.countryLanguage l where c.code = ?1 and l.is_official=true")
+    @Query("SELECT c.name, c.continent, c.population, c.life_expectancy, c.code " +
+            "from Country c JOIN c.countryLanguage l where c.code = :code and l.is_official=true")
     List<String> findByCode(String code);
 
-    List<Country> findAllByName(String name);
-
-
-    List<Country> findByCountryLanguage(String lang);
-
-
-
+    Country findByName(String name);
 
 }
