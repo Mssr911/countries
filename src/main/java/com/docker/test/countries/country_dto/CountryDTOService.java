@@ -1,4 +1,4 @@
-package com.docker.test.countries.countryDTO;
+package com.docker.test.countries.country_dto;
 
 import org.springframework.stereotype.Service;
 

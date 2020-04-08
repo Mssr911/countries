@@ -1,4 +1,4 @@
-package com.docker.test.countries.countryLanguage;
+package com.docker.test.countries.country_language;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -9,6 +9,9 @@ import java.util.List;
 @Repository
 public interface CountryLanguageRepository extends JpaRepository<CountryLanguage, String> {
 
-    @Query("select l.language, l.country.name from CountryLanguage l where l.language = :language")
-    List<String> findByLanguage(String language);
+    @Query("select l.country.name from CountryLanguage l where l.language = :language")
+    List<String> findUsingLanguage(String language);
+
+    List<CountryLanguage> findAllByCode(String code);
+
 }

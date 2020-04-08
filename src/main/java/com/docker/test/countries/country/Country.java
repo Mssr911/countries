@@ -1,11 +1,10 @@
 package com.docker.test.countries.country;
 
 
-import com.docker.test.countries.countryDTO.CountryDTO;
-import com.docker.test.countries.countryLanguage.CountryLanguage;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.docker.test.countries.country_language.CountryLanguage;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,24 +16,18 @@ public class Country {
     private String code;
     @Column(name = "name")
     public String name;
+    @Column(name = "continent")
     private String continent;
+    @Column(name = "population")
     private Integer population;
-    @Column(columnDefinition = "float4")
-    private Double life_expectancy;
+    @Column(name = "life_expectancy", columnDefinition = "float4")
+    private Double lifeExpectancy;
 
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "country")
     private Set<CountryLanguage> countryLanguage;
 
-    public Country() {
-    }
-
-    public Country(String name, String continent, Integer population, Double life_expectancy, String country_language) {
-        this.name = name;
-        this.continent = continent;
-        this.population = population;
-        this.life_expectancy = life_expectancy;
-        this.countryLanguage.toArray()[0] = country_language;
+    public Country() {              // Hibernate requires empty constructor and getters
     }
 
     public String getCode() {
@@ -53,8 +46,8 @@ public class Country {
         return population;
     }
 
-    public Double getLife_expectancy() {
-        return life_expectancy;
+    public Double getLifeExpectancy() {
+        return lifeExpectancy;
     }
 
     public Set<CountryLanguage> getCountryLanguage() { return countryLanguage; }

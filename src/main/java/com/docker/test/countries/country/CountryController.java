@@ -1,9 +1,8 @@
 package com.docker.test.countries.country;
 
-import com.docker.test.countries.countryDTO.CountryDTO;
-import com.docker.test.countries.countryDTO.CountryDTOService;
-import com.docker.test.countries.countryLanguage.CountryLanguage;
-import com.docker.test.countries.countryLanguage.CountryLanguageRepository;
+import com.docker.test.countries.country_dto.CountryDTO;
+import com.docker.test.countries.country_dto.CountryDTOService;
+import com.docker.test.countries.country_language.CountryLanguageRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +24,7 @@ public class CountryController {
 
     @GetMapping("/{code}")
     public List<CountryDTO> findCountryByCode(@PathVariable String code) {
-        List<String> list = countryRepository.findByCode(code);
+        List<String> list = countryRepository.findUsingCode(code);
         return service.convertToDTOList(list);
     }
 
@@ -37,7 +36,7 @@ public class CountryController {
 
     @GetMapping("/lang/{lang}")
     public List<CountryDTO> findByLang(@PathVariable String lang) {
-        List<String> list = languageRepository.findByLanguage(lang);
+        List<String> list = languageRepository.findUsingLanguage(lang);
         return service.convertToDTOList(list);
     }
 }
