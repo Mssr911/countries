@@ -1,11 +1,11 @@
 version: '3'
 services:
-  db:
+  wdb:
     image: world-db:1
     expose:
-      - "9090"
+      - "5432"
     ports:
-      - "9090:5432"
+      - "5432:5432"
     restart: unless-stopped
     network_mode: bridge
     container_name: db
@@ -21,6 +21,6 @@ services:
       - "8080:8080"
     restart: unless-stopped
     depends_on:
-      - db
+      - wdb
     links:
-      - db
+      - wdb
